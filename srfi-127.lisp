@@ -1,4 +1,4 @@
-;;;; srfi-229.lisp
+;;;; srfi-127.lisp
 (r7rs:r7rs)
 (cl:in-package "https://github.com/g000001/srfi-127#internals")
 
@@ -255,11 +255,11 @@
 ;; Return tail of lseq whose first element is x in the sense of = (default equal?)
 (define lseq-member
   (case-lambda
-    ((x lseq) (lseq-member x lseq #'equal?))
-    ((x lseq =) (cond
-                   ((null? lseq) #f)
-                   ((= x (lseq-car lseq)) lseq)
-                   (else (lseq-member x (lseq-cdr lseq) =))))))
+   ((x lseq) (lseq-member x lseq #'equal?))
+   ((x lseq =) (cond
+                ((null? lseq) #f)
+                ((_= x (lseq-car lseq)) lseq)
+                (else (lseq-member x (lseq-cdr lseq) =))))))
 
 
 ;; Member using eqv?
